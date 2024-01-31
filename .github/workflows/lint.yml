@@ -27,5 +27,5 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
-      - name: Run rspec
+      - name: Run standard
         run: bundle exec rake standard
