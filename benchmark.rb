@@ -10,9 +10,8 @@ require "active_support"
 require "active_support/cache/redis_cache_store"
 require "active_support/cache/s3_cache_store"
 require "redis"
-require "redis-clustering"
 
-COUNT = 1000
+COUNT = 100
 KEYS = COUNT.times.map { "{benchmark}:#{SecureRandom.hex(16)}" }
 
 puts "Generated #{COUNT} keys"
@@ -38,7 +37,7 @@ def bench(store, subject)
 end
 
 def bench_redis_cache_store
-  redis = Redis::Cluster.new(nodes: [ENV["REDIS_URL"]])
+  redis = Redis.new(url: ENV["REDIS_URL"])
   store = ActiveSupport::Cache::RedisCacheStore.new(redis: redis)
   bench(store, store.class.name)
 end

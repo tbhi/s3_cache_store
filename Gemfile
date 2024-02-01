@@ -19,5 +19,4 @@ gem "msgpack"
 gem "dalli"
 
 # for benchmark
-gem "redis"
-gem "redis-clustering"
+gem "redis", "~> 4.2"
