@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```rb
+config.cache_store = :s3_cache_store, { 
+  bucket: ENV['AWS_S3_BUCKET'],
+  region: ENV['AWS_REGION'], 
+  prefix: 'cache/',
+}
+```
 
 ## Development
 
