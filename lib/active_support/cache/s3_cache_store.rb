@@ -66,7 +66,7 @@ module ActiveSupport
       def write_entry(key, entry, **options)
         return false if options[:unless_exist] && s3_client.exists_object?(object_key(key))
 
-        payload = serialize_entry(entry, **options)
+        payload = serialize_entry(entry)
         s3_client.write_object(object_key(key), payload)
       end
 
